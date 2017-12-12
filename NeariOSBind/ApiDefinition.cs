@@ -3,6 +3,7 @@ using CoreBluetooth;
 using CoreLocation;
 using Foundation;
 using ObjCRuntime;
+using UIKit;
 
 namespace NearIT
 {
@@ -83,6 +84,14 @@ namespace NearIT
         //- (void)optOutWithCompletionHandler:(void (^_Nonnull)(BOOL success))handler;
         [Export("optOutWithCompletionHandler:")]
         void OptOutWithCompletionHandler(Action<bool> handler);
+
+        //- (void)processCustomTriggerWithKey:(NSString* _Nonnull)key;
+        [Export("processCustomTriggerWithKey:")]
+        void ProcessCustomTriggerWithKey(NSString key);
+
+        //- (void)application:(UIApplication* _Nonnull)application performFetchWithCompletionHandler:(void (^_Nonnull)(UIBackgroundFetchResult))completionHandler;
+        [Export("application:performFetchWithCompletionHandler:")]
+        void Application(UIApplication application, UIBackgroundFetchResult completionHandler);
 
     }
 
