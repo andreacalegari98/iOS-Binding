@@ -87,7 +87,7 @@ namespace NearIT
 
         //- (void)processCustomTriggerWithKey:(NSString* _Nonnull)key;
         [Export("processCustomTriggerWithKey:")]
-        void ProcessCustomTriggerWithKey(NSString key);
+        void ProcessCustomTriggerWithKey(string key);
 
         //- (void)application:(UIApplication* _Nonnull)application performFetchWithCompletionHandler:(void (^_Nonnull)(UIBackgroundFetchResult))completionHandler;
         [Export("application:performFetchWithCompletionHandler:")]
