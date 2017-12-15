@@ -91,7 +91,7 @@ namespace NearIT
 
         //- (void)application:(UIApplication* _Nonnull)application performFetchWithCompletionHandler:(void (^_Nonnull)(UIBackgroundFetchResult))completionHandler;
         [Export("application:performFetchWithCompletionHandler:")]
-        void Application(UIApplication application, UIBackgroundFetchResult completionHandler);
+        void PerformFetchWithCompletionHandler(UIApplication application, Action<UIBackgroundFetchResult> completionHandler);
 
     }
 
@@ -724,4 +724,39 @@ namespace NearIT
         [Export("resourceObjectWithDictiornary:")]
         NITJSONAPIResource ResourceObjectWithDictiornary(NSDictionary dictionary);
     }
+
+    /*//@interface NITRecipeForceRefresher : NSObject
+    [BaseType(typeof(NSObject))]
+    interface NITRecipeForceRefresher
+    {
+        //- (instancetype _Nonnull)initWithRepositoryState:(NITRecipeRepositoryState* _Nonnull)state dateManager:(NITDateManager* _Nonnull)dateManager;
+        [Export("initWithRepositoryState:dateManager:")]
+        IntPtr Constructor(NITRecipeRepositoryState state, NITDateManager dateManager);
+
+        //- (BOOL)shouldRefresh;
+        [Export("shouldRefresh:")]
+        bool ShouldRefresh { get; }
+    }
+
+    //@interface NITRecipeRepositoryState : NSObject
+    [BaseType(typeof(NSObject))]
+    interface NITRecipeRepositoryState
+    {
+        //@property(nonatomic) NSTimeInterval lastEditedTime;
+        [Export("lastEditedTime")]
+        NSTimeInterval LastEditedTime { get; set; }
+
+        //@property(nonatomic) BOOL pulseEvaluationOnline;
+        [Export("pulseEvaluationOnline")]
+        bool PulseEvaluationOnline { get; set; }
+
+        //@property(nonatomic) NSTimeInterval minTimeToRefresh;
+        [Export("minTimeToRefresh")]
+        NSTimeInterval MinTimeToRefresh { get; set; }
+
+        //- (instancetype _Nonnull) initWithCacheManager:(NITCacheManager* _Nonnull) cacheManager;
+        [Export("initWithCacheManager:")]
+        IntPtr Constructor(NITCacheManager cacheManager);
+    }*/
+
 }
