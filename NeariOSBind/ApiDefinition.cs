@@ -37,6 +37,11 @@ namespace NearIT
         [Export("defaultManager")]
         NITManager DefaultManager { get; }
 
+        //+ (void)setFrameworkName:(NSString* _Nonnull)frameworkName;
+        [Static]
+        [Export("setFrameworkName:")]
+        void SetFrameworkName(string FrameworkName);
+
         // -(void)start;
         [Export("start")]
         void Start();
@@ -93,6 +98,13 @@ namespace NearIT
         [Export("application:performFetchWithCompletionHandler:")]
         void PerformFetchWithCompletionHandler(UIApplication application, Action<UIBackgroundFetchResult> completionHandler);
 
+        //- (void)setProfileId:(NSString * _Nonnull)profileId;
+        [Export("setProfileId:")]
+        void SetProfileId(string ProfileId);
+
+        //- (void)parseContent:(id _Nonnull)content trackingInfo:(NITTrackingInfo* _Nonnull)trackingInfo contentDelegate:(id<NITContentDelegate> _Nonnull)contentDelegate;
+        [Export("parseContent:trackingInfo:contentDelegate:")]
+        void ParseContent(NSObject Content, NITTrackingInfo TrackingInfo, NITContentDelegate ContentDelegate);
     }
 
     // @protocol NITManagerDelegate <NSObject>
@@ -369,8 +381,13 @@ namespace NearIT
         string Question { get; set; }
 
         // @property (nonatomic, strong) NSString * _Nonnull recipeId;
+        [Obsolete("Use TrackingInfo instead.")]
         [Export("recipeId", ArgumentSemantic.Strong)]
         string RecipeId { get; set; }
+
+        // @property(nonatomic, strong) NITTrackingInfo* _Nonnull trackingInfo;
+        [Export("trackingInfo", ArgumentSemantic.Strong)]
+        NITTrackingInfo TrackingInfo { get; set; }
     }
 
     // @interface NITFeedbackEvent : NITEvent
@@ -724,6 +741,39 @@ namespace NearIT
         [Export("resourceObjectWithDictiornary:")]
         NITJSONAPIResource ResourceObjectWithDictiornary(NSDictionary dictionary);
     }
+
+    // @protocol NITContentDelegate <NSObject>
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface NITContentDelegate
+    {
+        //- (void) gotSimpleNotification:(NITSimpleNotification* _Nonnull) notification trackingInfo:(NITTrackingInfo* _Nonnull) trackingInfo;
+        [Abstract]
+        [Export("gotSimpleNotification:trackingInfo:")]
+        void GotSimpleNotification(NITSimpleNotification Notification, NITTrackingInfo TrackingInfo);
+
+        //- (void) gotContent:(NITContent* _Nonnull) content trackingInfo:(NITTrackingInfo* _Nonnull) trackingInfo;
+        [Abstract]
+        [Export("gotContent:trackingInfo:")]
+        void GotContent(NITContent Content, NITTrackingInfo TrackingInfo);
+
+        //- (void) gotCoupon:(NITCoupon* _Nonnull) coupon trackingInfo:(NITTrackingInfo* _Nonnull) trackingInfo;
+        [Abstract]
+        [Export("gotCoupon:trackingInfo:")]
+        void GotCoupon(NITCoupon Coupon, NITTrackingInfo TrackingInfo);
+
+        //- (void) gotFeedback:(NITFeedback* _Nonnull) feedback trackingInfo:(NITTrackingInfo* _Nonnull) trackingInfo;
+        [Abstract]
+        [Export("gotFeedback:trackingInfo:")]
+        void GotFeedback(NITFeedback Feedback, NITTrackingInfo TrackingInfo);
+
+        //- (void) gotCustomJSON:(NITCustomJSON* _Nonnull) customJson trackingInfo:(NITTrackingInfo* _Nonnull) trackingInfo;
+        [Abstract]
+        [Export("gotCustomJSON:trackingInfo:")]
+        void GotCustomJSON(NITCustomJSON CustomJSON, NITTrackingInfo TrackingInfo);
+
+    }
+
 
     /*//@interface NITRecipeForceRefresher : NSObject
     [BaseType(typeof(NSObject))]

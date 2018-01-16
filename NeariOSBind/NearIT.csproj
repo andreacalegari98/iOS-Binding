@@ -41,7 +41,7 @@
     <ObjcBindingCoreSource Include="Structs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="..\..\..\iOS_2.5.1._Static_Library\libNearIT.a">
+    <NativeReference Include="..\..\..\..\Release-universal-2.5.5\libNearIT.a">
       <Kind>Static</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>
