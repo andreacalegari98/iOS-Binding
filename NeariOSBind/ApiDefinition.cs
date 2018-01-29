@@ -162,6 +162,18 @@ namespace NearIT
         // @property (readonly, nonatomic) NITContentLink * _Nullable link;
         [NullAllowed, Export("link")]
         NITContentLink Link { get; }
+
+        //@property(nonatomic, strong) NSDictionary<NSString*, id>* _Nonnull internalLink;
+        [Export("internalLink")]
+        NSDictionary<NSString, NSObject> InternalLink { get; set; }
+
+        /*//- (void)setInternalLink:(NSDictionary<NSString *,id> *)internalLinks;
+        [Export("setInternalLink:")]
+        void SetInternalLink(NSDictionary<NSString, NSObject> internalLink);
+
+        //- (void)writeSomething:(NSString *_Nonnull)value;
+        [Export("writeSomething:")]
+        void WriteSomething(NSString value);*/
     }
 
     // @interface NITImage : NITResource <NSCoding>

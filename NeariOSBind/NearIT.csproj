@@ -41,8 +41,8 @@
     <ObjcBindingCoreSource Include="Structs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="..\..\..\..\Release-universal-2.5.5\libNearIT.a">
-      <Kind>Static</Kind>
+    <NativeReference Include="..\..\..\..\NearITSDK.framework">
+      <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>
   </ItemGroup>

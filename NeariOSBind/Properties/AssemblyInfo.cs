@@ -17,7 +17,7 @@ using Foundation;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("${AuthorCopyright}")]
+[assembly: AssemblyCopyright("(c) Andrea Calegari")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
